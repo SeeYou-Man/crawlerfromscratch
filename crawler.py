@@ -21,12 +21,12 @@ HELPMSG = ("----------------- Usage ----------------\n"
 
 def print_help(warning=False):
     if warning:
-        print "---------------- Warning ---------------"
-        print "Arguments unrecoginized, plz check usage"
+        print("---------------- Warning ---------------")
+        print("Arguments unrecoginized, plz check usage")
     else:
-        print "----------------------------------------"
-        print "Welcome to this web crawler coded by Kai"
-    print HELPMSG
+        print("----------------------------------------")
+        print("Welcome to this web crawler coded by Kai")
+    print(HELPMSG)
 
 
 def main():
@@ -45,10 +45,10 @@ def main():
     elif len(args) == 2:
         if args[0] == "-c":         # crawl
             url = args[1]
-            print "[crawler.py] start crawling"
+            print("[crawler.py] start crawling")
             spider = Spider()
             spider.crawl(url)
-            print "[crawler.py] crawling done"
+            print("[crawler.py] crawling done")
         else:
             print_help(True)
     else:

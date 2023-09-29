@@ -3,7 +3,7 @@
 # Date: 06/11/2016
 
 
-from urlparse import urlparse   # for domain extraction
+from urllib.parse import urlparse   # for domain extraction
 import re                       # for regular expression
 
 
@@ -76,4 +76,4 @@ def contain_static(val):
 
 
 if __name__ == "__main__":
-    print "I don't like snakes. Don't python me directly."
+    print("I don't like snakes. Don't python me directly.")

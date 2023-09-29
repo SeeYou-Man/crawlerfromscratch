@@ -3,9 +3,9 @@
 # Date: 05/11/2016
 
 
-from HTMLParser import HTMLParser   # for parsing HTML
-from urlparse import urljoin        # for join two urls
-from urllib2 import urlopen         # for GET request
+from html.parser import HTMLParser   # for parsing HTML
+from urllib.parse import urljoin        # for join two urls
+from urllib.request import urlopen         # for GET request
 from helper import clean, get_domain, valid, contain_static
 
 
@@ -22,7 +22,7 @@ class HTMLParser(HTMLParser):
         for key, val in attrs:
             if key == "href":
                 if contain_static(val):             # handle static files
-                    print "-", val                  # show the static file
+                    print( "-", val)                  # show the static file
                 elif tag == "a":                    # handle links
                     url = urljoin(self.url, val)    # append relative path to the root path
                     url = clean(url)                # clean up url
@@ -51,7 +51,7 @@ class HTMLParser(HTMLParser):
         except KeyboardInterrupt:                   # deal with Ctrl-C
             exit()
         except:
-            print "Unexpected failure happens and the spider escapes."
+            print("Unexpected failure happens and the spider escapes.")
 
         return self.urls
 
@@ -68,7 +68,7 @@ class Spider(object):
 
         while len(self.to_visit) > 0:
             url = self.to_visit.pop(0)      # get next url
-            print "The spider is visiting:", url
+            print("The spider is visiting:", url)
             urls = self.parser.run(url)     # parse the url
             self.visted.add(url)            # add this visted url to visted list
 
@@ -78,8 +78,8 @@ class Spider(object):
                 if url not in self.visted and url not in self.to_visit:
                     self.to_visit.append(url)
 
-        print "The spider has finished crawling the web at {url}".format(url=target_url)
+        print("The spider has finished crawling the web at {url}".format(url=target_url))
 
 
 if __name__ == "__main__":
-    print "I don't like snakes. Don't python me directly."
+    print("I don't like snakes. Don't python me directly.")
